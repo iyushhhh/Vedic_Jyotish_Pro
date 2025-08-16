@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VedicJyotish Pro - Complete Cosmic Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="sanskrit-om">ॐ</span>
+                <span class="logo-text">VedicJyotish Pro</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="sidebar-menu">
+            <a href="#" class="menu-item active" data-section="home">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">
+                    <span class="lang-en">Home</span>
+                    <span class="lang-hi hidden">होम</span>
+                </span>
+            </a>
+            <a href="#" class="menu-item" data-section="input">
+                <span class="menu-icon">📝</span>
+                <span class="menu-text">
+                    <span class="lang-en">Birth Details</span>
+                    <span class="lang-hi hidden">जन्म विवरण</span>
+                </span>
+            </a>
+            <a href="#" class="menu-item" data-section="report">
+                <span class="menu-icon">📊</span>
+                <span class="menu-text">
+                    <span class="lang-en">Report</span>
+                    <span class="lang-hi hidden">रिपोर्ट</span>
+                </span>
+            </a>
+            <a href="#" class="menu-item" data-section="transits">
+                <span class="menu-icon">🌙</span>
+                <span class="menu-text">
+                    <span class="lang-en">Transits</span>
+                    <span class="lang-hi hidden">गोचर</span>
+                </span>
+            </a>
+            <a href="#" class="menu-item" data-section="about">
+                <span class="menu-icon">📚</span>
+                <span class="menu-text">
+                    <span class="lang-en">About</span>
+                    <span class="lang-hi hidden">परिचय</span>
+                </span>
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <div class="theme-controls">
+                <button id="themeToggle" class="theme-btn">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button id="languageToggle" class="lang-btn">
+                    <span class="lang-en">हि</span>
+                    <span class="lang-hi hidden">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="cosmic-hero">
+                <div class="cosmic-background"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="cosmic-title">
+                            <span class="lang-en">Unlock Your Cosmic Destiny</span>
+                            <span class="lang-hi hidden">अपनी ब्रह्मांडीय नियति को जानें</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            <span class="lang-en">Complete Vedic Astrology Analysis with Divisional Charts, Ashtakavarga, Panchanga, and Advanced Yogas</span>
+                            <span class="lang-hi hidden">संपूर्ण वैदिक ज्योतिष विश्लेषण के साथ वर्ग कुंडली, अष्टकवर्ग, पंचांग और उन्नत योग</span>
+                        </p>
+                        <button class="cosmic-btn" data-section="input">
+                            <span class="lang-en">Start Your Cosmic Journey</span>
+                            <span class="lang-hi hidden">अपनी ब्रह्मांडीय यात्रा शुरू करें</span>
+                        </button>
+                    </div>
+                    <div class="cosmic-wheel-container">
+                        <div class="cosmic-wheel" id="cosmicWheel"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-cosmic">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span class="lang-en">Advanced Cosmic Features</span>
+                        <span class="lang-hi hidden">उन्नत ब्रह्मांडीय विशेषताएं</span>
+                    </h2>
+                    <div class="features-grid-cosmic">
+                        <div class="feature-card-cosmic">
+                            <div class="feature-icon-cosmic">📊</div>
+                            <h3>
+                                <span class="lang-en">16 Divisional Charts</span>
+                                <span class="lang-hi hidden">16 वर्ग कुंडलियां</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">Complete D1-D60 charts with detailed analysis</span>
+                                <span class="lang-hi hidden">विस्तृत विश्लेषण के साथ संपूर्ण D1-D60 चार्ट</span>
+                            </p>
+                        </div>
+                        <div class="feature-card-cosmic">
+                            <div class="feature-icon-cosmic">🔥</div>
+                            <h3>
+                                <span class="lang-en">Ashtakavarga System</span>
+                                <span class="lang-hi hidden">अष्टकवर्ग सिस्टम</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">Bhinna & Sarvashtakavarga with heat-maps</span>
+                                <span class="lang-hi hidden">हीट-मैप के साथ भिन्न और सर्वाष्टकवर्ग</span>
+                            </p>
+                        </div>
+                        <div class="feature-card-cosmic">
+                            <div class="feature-icon-cosmic">🌟</div>
+                            <h3>
+                                <span class="lang-en">50+ Classical Yogas</span>
+                                <span class="lang-hi hidden">50+ शास्त्रीय योग</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">Raj, Dhana, Pancha Mahapurusha & more</span>
+                                <span class="lang-hi hidden">राज, धन, पंच महापुरुष और अन्य</span>
+                            </p>
+                        </div>
+                        <div class="feature-card-cosmic">
+                            <div class="feature-icon-cosmic">📅</div>
+                            <h3>
+                                <span class="lang-en">Complete Panchanga</span>
+                                <span class="lang-hi hidden">संपूर्ण पंचांग</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">Tithi, Nakshatra, Yoga, Karana analysis</span>
+                                <span class="lang-hi hidden">तिथि, नक्षत्र, योग, करण विश्लेषण</span>
+                            </p>
+                        </div>
+                        <div class="feature-card-cosmic">
+                            <div class="feature-icon-cosmic">🌙</div>
+                            <h3>
+                                <span class="lang-en">Live Transit Analysis</span>
+                                <span class="lang-hi hidden">लाइव गोचर विश्लेषण</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">Real-time planetary positions & effects</span>
+                                <span class="lang-hi hidden">वास्तविक समय ग्रह स्थिति और प्रभाव</span>
+                            </p>
+                        </div>
+                        <div class="feature-card-cosmic">
+                            <div class="feature-icon-cosmic">💎</div>
+                            <h3>
+                                <span class="lang-en">Advanced Remedies</span>
+                                <span class="lang-hi hidden">उन्नत उपचार</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">Gemstones, Mantras, Vastu, Pranayama</span>
+                                <span class="lang-hi hidden">रत्न, मंत्र, वास्तु, प्राणायाम</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Input Section -->
+        <section id="input" class="section">
+            <div class="input-cosmic">
+                <div class="container">
+                    <div class="glass-form">
+                        <div class="form-header">
+                            <h2>
+                                <span class="lang-en">Enter Your Cosmic Coordinates</span>
+                                <span class="lang-hi hidden">अपने ब्रह्मांडीय निर्देशांक दर्ज करें</span>
+                            </h2>
+                            <p>
+                                <span class="lang-en">Precise birth details ensure accurate cosmic analysis</span>
+                                <span class="lang-hi hidden">सटीक जन्म विवरण सुनिश्चित करता है सही ब्रह्मांडीय विश्लेषण</span>
+                            </p>
+                        </div>
+                        <form id="birthDetailsForm" class="cosmic-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="fullName">
+                                        <span class="lang-en">Full Name</span>
+                                        <span class="lang-hi hidden">पूरा नाम</span>
+                                    </label>
+                                    <input type="text" id="fullName" name="fullName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="gender">
+                                        <span class="lang-en">Gender</span>
+                                        <span class="lang-hi hidden">लिंग</span>
+                                    </label>
+                                    <select id="gender" name="gender" class="form-control">
+                                        <option value="male">
+                                            <span class="lang-en">Male</span>
+                                            <span class="lang-hi hidden">पुरुष</span>
+                                        </option>
+                                        <option value="female">
+                                            <span class="lang-en">Female</span>
+                                            <span class="lang-hi hidden">महिला</span>
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="dateOfBirth">
+                                        <span class="lang-en">Date of Birth</span>
+                                        <span class="lang-hi hidden">जन्म तिथि</span>
+                                    </label>
+                                    <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="timeOfBirth">
+                                        <span class="lang-en">Time of Birth</span>
+                                        <span class="lang-hi hidden">जन्म समय</span>
+                                    </label>
+                                    <input type="time" id="timeOfBirth" name="timeOfBirth" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="placeOfBirth">
+                                    <span class="lang-en">Place of Birth</span>
+                                    <span class="lang-hi hidden">जन्म स्थान</span>
+                                </label>
+                                <input type="text" id="placeOfBirth" name="placeOfBirth" class="form-control" required 
+                                       placeholder="Type city name...">
+                                <div id="placeSuggestions" class="place-suggestions hidden"></div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="cosmic-btn" id="generateReport">
+                                    <span class="lang-en">Generate Cosmic Report</span>
+                                    <span class="lang-hi hidden">ब्रह्मांडीय रिपोर्ट तैयार करें</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Report Section -->
+        <section id="report" class="section">
+            <div class="report-cosmic">
+                <div class="container">
+                    <div class="report-header-cosmic">
+                        <h2 id="reportPersonName">Cosmic Analysis Report</h2>
+                        <div class="report-actions">
+                            <button class="action-btn" id="downloadPdf">
+                                <span class="lang-en">📄 Download PDF</span>
+                                <span class="lang-hi hidden">📄 पीडीएफ डाउनलोड</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="report-tabs" id="reportTabs">
+                        <button class="tab-btn active" data-tab="overview">
+                            <span class="lang-en">Overview</span>
+                            <span class="lang-hi hidden">सारांश</span>
+                        </button>
+                        <button class="tab-btn" data-tab="dcharts">
+                            <span class="lang-en">D-Charts</span>
+                            <span class="lang-hi hidden">वर्ग कुंडली</span>
+                        </button>
+                        <button class="tab-btn" data-tab="ashtakavarga">
+                            <span class="lang-en">Ashtakavarga</span>
+                            <span class="lang-hi hidden">अष्टकवर्ग</span>
+                        </button>
+                        <button class="tab-btn" data-tab="yogas">
+                            <span class="lang-en">Yogas</span>
+                            <span class="lang-hi hidden">योग</span>
+                        </button>
+                        <button class="tab-btn" data-tab="dashas">
+                            <span class="lang-en">Dashas</span>
+                            <span class="lang-hi hidden">दशाएं</span>
+                        </button>
+                        <button class="tab-btn" data-tab="panchanga">
+                            <span class="lang-en">Panchanga</span>
+                            <span class="lang-hi hidden">पंचांग</span>
+                        </button>
+                        <button class="tab-btn" data-tab="predictions">
+                            <span class="lang-en">Predictions</span>
+                            <span class="lang-hi hidden">भविष्यवाणी</span>
+                        </button>
+                        <button class="tab-btn" data-tab="remedies">
+                            <span class="lang-en">Remedies</span>
+                            <span class="lang-hi hidden">उपाय</span>
+                        </button>
+                    </div>
+
+                    <div class="tab-content">
+                        <!-- Overview Tab -->
+                        <div id="overview-tab" class="tab-pane active">
+                            <div class="glass-card">
+                                <h3>
+                                    <span class="lang-en">Personal Details</span>
+                                    <span class="lang-hi hidden">व्यक्तिगत विवरण</span>
+                                </h3>
+                                <div id="personalDetails" class="personal-details-grid"></div>
+                            </div>
+                            <div class="glass-card">
+                                <h3>
+                                    <span class="lang-en">Birth Chart (Rashi Chart)</span>
+                                    <span class="lang-hi hidden">जन्म कुंडली (राशि चार्ट)</span>
+                                </h3>
+                                <div class="chart-container">
+                                    <div id="birthChart" class="birth-chart-svg"></div>
+                                </div>
+                            </div>
+                            <div class="glass-card">
+                                <h3>
+                                    <span class="lang-en">Planetary Positions</span>
+                                    <span class="lang-hi hidden">ग्रह स्थिति</span>
+                                </h3>
+                                <div class="table-responsive">
+                                    <table id="planetaryPositions" class="cosmic-table">
+                                        <thead>
+                                            <tr>
+                                                <th><span class="lang-en">Planet</span><span class="lang-hi hidden">ग्रह</span></th>
+                                                <th><span class="lang-en">Sign</span><span class="lang-hi hidden">राशि</span></th>
+                                                <th><span class="lang-en">House</span><span class="lang-hi hidden">भाव</span></th>
+                                                <th><span class="lang-en">Degree</span><span class="lang-hi hidden">अंश</span></th>
+                                                <th><span class="lang-en">Nakshatra</span><span class="lang-hi hidden">नक्षत्र</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- D-Charts Tab -->
+                        <div id="dcharts-tab" class="tab-pane">
+                            <div class="dcharts-grid" id="dchartsContainer"></div>
+                        </div>
+
+                        <!-- Ashtakavarga Tab -->
+                        <div id="ashtakavarga-tab" class="tab-pane">
+                            <div id="ashtakavargaContainer"></div>
+                        </div>
+
+                        <!-- Yogas Tab -->
+                        <div id="yogas-tab" class="tab-pane">
+                            <div id="yogasContainer"></div>
+                        </div>
+
+                        <!-- Dashas Tab -->
+                        <div id="dashas-tab" class="tab-pane">
+                            <div id="dashasContainer"></div>
+                        </div>
+
+                        <!-- Panchanga Tab -->
+                        <div id="panchanga-tab" class="tab-pane">
+                            <div id="panchangaContainer"></div>
+                        </div>
+
+                        <!-- Predictions Tab -->
+                        <div id="predictions-tab" class="tab-pane">
+                            <div id="predictionsContainer"></div>
+                        </div>
+
+                        <!-- Remedies Tab -->
+                        <div id="remedies-tab" class="tab-pane">
+                            <div id="remediesContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transits Section -->
+        <section id="transits" class="section">
+            <div class="transits-cosmic">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span class="lang-en">Live Transit Analysis</span>
+                        <span class="lang-hi hidden">लाइव गोचर विश्लेषण</span>
+                    </h2>
+                    <div class="transits-content">
+                        <div class="glass-card">
+                            <h3>
+                                <span class="lang-en">Current Planetary Positions</span>
+                                <span class="lang-hi hidden">वर्तमान ग्रह स्थिति</span>
+                            </h3>
+                            <div id="currentTransits"></div>
+                        </div>
+                        <div class="glass-card">
+                            <h3>
+                                <span class="lang-en">Transit Effects</span>
+                                <span class="lang-hi hidden">गोचर प्रभाव</span>
+                            </h3>
+                            <div id="transitEffects"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="about-cosmic">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span class="lang-en">About Vedic Jyotish</span>
+                        <span class="lang-hi hidden">वैदिक ज्योतिष के बारे में</span>
+                    </h2>
+                    <div class="about-content">
+                        <div class="glass-card">
+                            <h3>
+                                <span class="lang-en">Ancient Wisdom</span>
+                                <span class="lang-hi hidden">प्राचीन ज्ञान</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">Vedic Astrology, also known as Jyotish, is an ancient system of astrology that originated in the Indian subcontinent thousands of years ago. It's based on the principle that cosmic bodies influence human life and destiny.</span>
+                                <span class="lang-hi hidden">वैदिक ज्योतिष, जिसे ज्योतिष भी कहा जाता है, एक प्राचीन ज्योतिष प्रणाली है जो हजारों साल पहले भारतीय उपमहाद्वीप में उत्पन्न हुई। यह इस सिद्धांत पर आधारित है कि ब्रह्मांडीय पिंड मानव जीवन और भाग्य को प्रभावित करते हैं।</span>
+                            </p>
+                        </div>
+                        <div class="glass-card">
+                            <h3>
+                                <span class="lang-en">Key Scriptures</span>
+                                <span class="lang-hi hidden">मुख्य शास्त्र</span>
+                            </h3>
+                            <div class="scriptures-list">
+                                <div class="scripture-item">
+                                    <strong>Brihat Parashara Hora Shastra</strong> - <span class="lang-en">Foundation of Vedic Astrology</span><span class="lang-hi hidden">वैदिक ज्योतिष की आधारशिला</span>
+                                </div>
+                                <div class="scripture-item">
+                                    <strong>Brihat Jataka</strong> - <span class="lang-en">Classical text by Varahamihira</span><span class="lang-hi hidden">वराहमिहिर का शास्त्रीय ग्रंथ</span>
+                                </div>
+                                <div class="scripture-item">
+                                    <strong>Phaladeepika</strong> - <span class="lang-en">Predictive principles</span><span class="lang-hi hidden">भविष्यवाणी के सिद्धांत</span>
+                                </div>
+                                <div class="scripture-item">
+                                    <strong>Jataka Parijata</strong> - <span class="lang-en">Comprehensive astrological treatise</span><span class="lang-hi hidden">व्यापक ज्योतिषीय ग्रंथ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top hidden">↑</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
